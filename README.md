@@ -2,6 +2,14 @@
 
 Unvault is a minimal layer for node that allows results of time-consuming tasks to be stored. Improved performance is achieved by adding trackers that periodically update the layer, so that stored responses can be served instantly once requested.
 
+<a href="https://www.npmjs.org/package/unvault">
+  <img src="https://img.shields.io/npm/v/unvault.svg?style=flat" alt="npm">
+</a>
+
+<a href="https://travis-ci.org/vaneenige/unvault">
+  <img src="https://travis-ci.org/vaneenige/unvault.svg?branch=master" alt="travis">
+</a>
+
 #### Features:
 
 * Insert key based trackers
@@ -39,7 +47,7 @@ vault.trigger("random");
 
 ### Advanced
 
-Unvault can be combined with a node servers like `Polka` or `Express` to quickly deliver stored content to users. Trackers also work with `async` and `await` for asynchronous updates. Store your external fetch responses, database results and other in the vault for faster response times.
+Unvault can be combined with a node servers like [Polka](https://github.com/lukeed/polka) or [Express](https://github.com/expressjs/express) to quickly deliver stored content to users. Trackers also work with `async` and `await` for asynchronous updates. Store your external fetch responses, database results and other in the vault for faster response times.
 
 ```js
 const polka = require("polka");
