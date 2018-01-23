@@ -1,0 +1,28 @@
+{
+  "name": "unvault",
+  "version": "0.1.0",
+  "description": "A minimal layer for node that allows results of time-consuming tasks to be stored.",
+  "repository": "vaneenige/unvault",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "author": {
+    "name": "Colin van Eenige",
+    "email": "cvaneenige@gmail.com",
+    "url": "https://use-the-platform.com"
+  },
+  "scripts": {
+    "test": "mocha test/index.js"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.0",
+    "sinon": "^4.2.1"
+  },
+  "dependencies": {
+    "mongodb": "^2.2.33",
+    "polka": "^0.2.3"
+  }
+}
