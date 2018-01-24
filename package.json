@@ -4,6 +4,7 @@
   "description": "A minimal layer for node that allows results of time-consuming tasks to be stored.",
   "repository": "vaneenige/unvault",
   "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "license": "MIT",
   "files": [
     "lib"
@@ -19,10 +20,8 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "mocha": "^5.0.0",
-    "sinon": "^4.2.1"
-  },
-  "dependencies": {
     "mongodb": "^2.2.33",
-    "polka": "^0.2.3"
+    "polka": "^0.2.3",
+    "sinon": "^4.2.1"
   }
 }
