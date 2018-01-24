@@ -16,6 +16,8 @@ Unvault is a minimal layer for node that allows results of time-consuming tasks 
 * Automatic and manual update
 * Support for `async` and `await`
 * Fast (without dependencies)
+* Small wrapper extending [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+* Support for multiple stores
 
 ## Install
 
@@ -28,11 +30,13 @@ $ npm install --save unvault
 ## Usage
 
 ```js
-const vault = require("unvault");
+const unvault = require("unvault");
 
-vault.insert("random", 1000, () => Math.random());
+const store = unvault();
 
-vault.find("random");
+store.insert("random", 1000, () => Math.random());
+
+const { value } = store.get("random");
 ```
 
 ### Manual
@@ -40,9 +44,9 @@ vault.find("random");
 Periodic updates might not suit your application's needs. Unvault supports a manual mode that provides more control over which trackers receive an update and when. Trackers with an interval of `0` will only run once. Both automatic and manual trackers allow for an update trigger.
 
 ```js
-vault.insert("random", 0, () => Math.random());
+store.insert("random", 0, () => Math.random());
 
-vault.trigger("random");
+store.trigger("random");
 ```
 
 ### Advanced
@@ -51,42 +55,37 @@ Unvault can be combined with a node servers like [Polka](https://github.com/luke
 
 ```js
 const polka = require("polka");
-const vault = require("unvault");
+const unvault = require("unvault");
 const fetch = require("node-fetch");
 
 const server = polka();
 server.listen(3000);
 
 const route = "/api/fetch";
+const routes = unvault();
 
-vault.insert(route, 2000, async () => {
-  let response = await fetch(url);
+routes.insert(route, 2000, async () => {
+  const response = await fetch(url);
   return response.json();
 });
 
 server.get(route, (req, res) => {
-  const { value } = vault.find(route);
+  const { value } = routes.get(route);
   server.send(res, 200, value, "application/json");
 });
 ```
 
 ## API
 
-### find(key)
-
-_Selects a tracker in the vault._
-
 ### insert(key, interval, update, value)
 
 _Inserts a tracker into the vault._
 
-### remove(key)
-
-_Removes a tracker from the vault._
-
 ### trigger(key)
 
 _Manually runs a tracker._
+
+> **Note:** As `unvault` extends [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), all of its functions are available: `clear()`, `delete(key)`, `entries()` and more!
 
 ## Benchmarks
 
