@@ -101,24 +101,24 @@ $ wrk -t8 -c100 -d10s http://localhost:3000/:type/mongo
 
 ```
 Thread Stats   Avg      Stdev     Max   +/- Stdev
-  Latency    43.61ms    7.83ms  64.93ms   66.54%
-  Req/Sec   275.65     23.42   356.00     62.63%
-22053 requests in 10.06s, 213.09MB read
+  Latency    45.73ms   10.05ms  76.48ms   69.61%
+  Req/Sec   262.81     24.40   363.00     67.21%
+21041 requests in 10.07s, 203.31MB read
 
-Requests/sec:   2192.49
-Transfer/sec:     21.19MB
+Requests/sec:   2089.66
+Transfer/sec:     20.19MB
 ```
 
 ### With unvault
 
 ```
 Thread Stats   Avg      Stdev     Max   +/- Stdev
-  Latency    13.09ms  601.66us  26.23ms   79.99%
-  Req/Sec     0.92k    39.31     0.97k    53.12%
-73370 requests in 10.02s, 708.95MB read
+  Latency     4.94ms  439.79us  12.74ms   92.44%
+  Req/Sec     2.44k   236.26     6.23k    98.88%
+195247 requests in 10.10s, 1.84GB read
 
-Requests/sec:   7324.64
-Transfer/sec:     70.78MB
+Requests/sec:  19325.37
+Transfer/sec:    186.73MB
 ```
 
 > **Note:** Unvault aims to reduce the time spend creating a response. If the process normally takes a second to finish this solution will eliminate most of that second.

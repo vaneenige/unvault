@@ -11,14 +11,20 @@ function connect(callback) {
   );
 }
 
+// Helper function to the nodes from mongodb
+async function getNodes(db) {
+  return db
+    .collection("nodes")
+    .find()
+    .toArray();
+}
+
 connect(db => {
   // Inserts a tracker into the vault
-  routes.insert("mongo", 2000, async () =>
-    db
-      .collection("nodes")
-      .find()
-      .toArray()
-  );
+  routes.insert("mongo", 2000, async () => {
+    const nodes = await getNodes(db);
+    return JSON.stringify(nodes);
+  });
 
   // Start the Polka node server
   const server = polka();
@@ -26,17 +32,12 @@ connect(db => {
 
   // Listen to the route that equals the tracker key
   server.get("/slow/mongo", async (req, res) => {
-    const data = JSON.stringify(
-      await db
-        .collection("nodes")
-        .find()
-        .toArray()
-    );
-    server.send(res, 200, data, "application/json");
+    const nodes = await getNodes(db);
+    server.send(res, 200, JSON.stringify(nodes), "application/json");
   });
 
-  server.get("/fast/mongo", async (req, res) => {
+  server.get("/fast/mongo", (req, res) => {
     const { value } = routes.get("mongo");
-    server.send(res, 200, JSON.stringify(value), "application/json");
+    server.send(res, 200, value, "application/json");
   });
 });
