@@ -39,6 +39,14 @@ store.insert("random", 1000, () => Math.random());
 const { value } = store.get("random");
 ```
 
+### TypeScript
+
+```js
+import * as unvault from "unvault";
+
+const store: Unvault = unvault();
+```
+
 ### Manual
 
 Periodic updates might not suit your application's needs. Unvault supports a manual mode that provides more control over which trackers receive an update and when. Trackers with an interval of `0` will only run once. Both automatic and manual trackers allow for an update trigger.
