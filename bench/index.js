@@ -1,5 +1,6 @@
 const mongodb = require("mongodb");
 const polka = require("polka");
+const send = require("@polka/send");
 const vault = require("./../lib");
 
 const routes = vault();
@@ -33,11 +34,15 @@ connect(db => {
   // Listen to the route that equals the tracker key
   server.get("/slow/mongo", async (req, res) => {
     const nodes = await getNodes(db);
-    server.send(res, 200, JSON.stringify(nodes), "application/json");
+    send(res, 200, JSON.stringify(nodes), {
+      "Content-Type": "application/json"
+    });
   });
 
   server.get("/fast/mongo", (req, res) => {
     const { value } = routes.get("mongo");
-    server.send(res, 200, value, "application/json");
+    send(res, 200, value, {
+      "Content-Type": "application/json"
+    });
   });
 });
