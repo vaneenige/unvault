@@ -19,8 +19,13 @@ describe("unvault", () => {
   });
 
   describe("insert()", () => {
+    before(() => {
+      store.insert("insert", 0, () => true);
+    });
+    after(() => {
+      store.delete("insert");
+    });
     it("should insert a tracker into the vault", () => {
-      store.insert("insert", 1000, () => true);
       expect(store.get("insert")).to.not.be.undefined;
     });
     it(`should trigger a tracker to update its value`, () => {
