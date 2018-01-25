@@ -1,21 +1,20 @@
 declare module 'unvault' {
-  /**
-   * Selects a tracker in the vault.
-   */
-  function find(key: string): any;
+  function unvault(): Unvault;
 
+  // relevant: https://github.com/Microsoft/TypeScript/issues/5073
+  namespace unvault {}
+
+  export = unvault;
+}
+
+declare class Unvault extends Map<string, any> {
   /**
    * Inserts a tracker into the vault.
    */
-  function insert(key: string, interval: number, update: Function, value?: any): void;
-
-  /**
-   * Removes a tracker from the vault.
-   */
-  function remove(key: string): boolean;
+  insert(key: string, interval: number, update: Function, value?: any): void;
 
   /**
    * Trigger a tracker to update its value.
    */
-  function trigger(key: string, automated?: boolean): Promise<any>;
+  trigger(key: string, automated?: boolean): Promise<any>;
 }
