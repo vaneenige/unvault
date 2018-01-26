@@ -1,9 +1,9 @@
 const mongodb = require("mongodb");
 const polka = require("polka");
 const send = require("@polka/send");
-const vault = require("./../lib");
+const unvault = require("./../lib");
 
-const routes = vault();
+const routes = unvault();
 
 // Helper function to connect with mongodb
 function connect(callback) {
