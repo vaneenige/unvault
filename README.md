@@ -1,6 +1,6 @@
 <h1>Unvault</h1>
 
-Unvault is a minimal layer for node that allows results of time-consuming tasks to be stored. Improved performance is achieved by adding trackers that periodically update the layer, so that stored responses can be served instantly once requested.
+Unvault is a minimal layer for node that allows results of time-consuming tasks to be stored. Improved performance is achieved by adding trackers that periodically update the layer, so that stored responses can be served instantly once requested. Also available as [middleware](https://github.com/vaneenige/unvault-middleware).
 
 <a href="https://www.npmjs.org/package/unvault">
   <img src="https://img.shields.io/npm/v/unvault.svg?style=flat" alt="npm">
@@ -73,7 +73,9 @@ const route = "/api/fetch";
 const routes = unvault();
 
 routes.insert(route, 2000, async () => {
-  const response = await fetch(url);
+  const response = await fetch(
+    "https://api.github.com/repos/vaneenige/unvault"
+  );
   return response.json();
 });
 
