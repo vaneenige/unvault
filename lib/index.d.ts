@@ -11,7 +11,7 @@ declare class Unvault extends Map<string, any> {
   /**
    * Inserts a tracker into the vault.
    */
-  insert(key: string, interval: number, update: Function, value?: any): void;
+  insert(key: string, interval: number, update: Function, options?: Object): void;
 
   /**
    * Trigger a tracker to update its value.
