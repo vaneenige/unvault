@@ -87,15 +87,19 @@ server.get(route, (req, res) => {
 
 ## API
 
-### insert(key, interval, update, value)
+### .insert(key, interval, update, options)
 
 _Inserts a tracker into the vault._
 
-### trigger(key)
+### .trigger(key)
 
 _Manually runs a tracker._
 
-> **Note:** As `unvault` extends [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), all of its functions are available: `clear()`, `delete(key)`, `entries()` and more!
+### .prototype
+
+As `unvault` extends [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), all of its functions are available: `clear()`, `delete(key)`, `entries()` and more!
+
+> **Note:** The update callback will receive the `key` as a parameter. Providing a `lifetime` variable (in ms) to the `options` object will delete the tracker and stop its automatic updates once it runs out.
 
 ## Benchmarks
 
