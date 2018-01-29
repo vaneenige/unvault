@@ -49,17 +49,17 @@ For this benchmark different libraries are used to render a list of X items with
 
 > **Note:** `Normal` only describes the way I used to set up my structure. Provide me better ways and I'll update them.
 
-### Preact
+### [Preact](https://github.com/developit/preact/)
 
-| Items | Normal | Unvault | faster |
+| Items | Normal | Unvault | Faster |
 | ----- | ------ | ------- | ------ |
 | 10    | 16960  | 25001   | 1.47x  |
 | 100   | 6013   | 26749   | 4.45x  |
 | 1000  | 850    | 23979   | 28.21x |
 
-### ViperHTML
+### [ViperHTML](https://github.com/WebReflection/viperHTML)
 
-| Items | Normal | Unvault | faster |
+| Items | Normal | Unvault | Faster |
 | ----- | ------ | ------- | ------ |
 | 10    | 10252  | 25001   | 2.44x  |
 | 100   | 2113   | 26749   | 12.66x |
