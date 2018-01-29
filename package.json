@@ -23,6 +23,8 @@
     "mocha": "^5.0.0",
     "mongodb": "^2.2.33",
     "polka": "^0.3.0",
+    "preact": "^8.2.7",
+    "preact-render-to-string": "^3.7.0",
     "sinon": "^4.2.1"
   }
 }
