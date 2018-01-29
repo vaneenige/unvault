@@ -126,3 +126,87 @@ Thread Stats   Avg      Stdev     Max   +/- Stdev
 Requests/sec:  14078.49
 Transfer/sec:    368.12MB
 ```
+
+## ViperHTML
+
+Server side rendering a ViperHTML based list of X items with random values.
+
+#### Results
+
+| Items | Normal | Unvault |
+| ----- | ------ | ------- |
+| 10    | 10037  | 25208   |
+| 100   | 2233   | 25711   |
+| 1000  | 244    | 22720   |
+
+#### Normal (10)
+
+```
+Thread Stats   Avg      Stdev     Max   +/- Stdev
+  Latency     9.66ms    3.20ms  32.22ms   87.02%
+  Req/Sec     1.26k   174.53     1.69k    62.25%
+100552 requests in 10.02s, 40.92MB read
+
+Requests/sec:  10037.43
+Transfer/sec:      4.08MB
+```
+
+#### Unvault (10)
+
+```
+Thread Stats   Avg      Stdev     Max   +/- Stdev
+  Latency     3.79ms  358.90us  14.37ms   91.45%
+  Req/Sec     3.18k   180.46     5.08k    94.29%
+254734 requests in 10.10s, 103.38MB read
+
+Requests/sec:  25208.77
+Transfer/sec:     10.23MB
+```
+
+#### Normal (100)
+
+```
+Thread Stats   Avg      Stdev     Max   +/- Stdev
+  Latency    42.83ms    9.67ms  75.26ms   70.49%
+  Req/Sec   280.94     49.71   363.00     71.62%
+22510 requests in 10.08s, 61.85MB read
+
+Requests/sec:   2233.51
+Transfer/sec:      6.14MB
+```
+
+#### Unvault (100)
+
+```
+Thread Stats   Avg      Stdev     Max   +/- Stdev
+  Latency     3.71ms  537.46us  15.61ms   95.65%
+  Req/Sec     3.26k   767.99    24.78k    99.88%
+259670 requests in 10.10s, 714.02MB read
+
+Requests/sec:  25711.39
+Transfer/sec:     70.70MB
+```
+
+#### Normal (1000)
+
+```
+Thread Stats   Avg      Stdev     Max   +/- Stdev
+  Latency   384.58ms   56.61ms 560.74ms   90.58%
+  Req/Sec    35.82     23.80   158.00     65.31%
+2463 requests in 10.08s, 64.42MB read
+
+Requests/sec:    244.42
+Transfer/sec:      6.39MB
+```
+
+#### Unvault (1000)
+
+```
+Thread Stats   Avg      Stdev     Max   +/- Stdev
+  Latency     4.24ms  729.91us  20.75ms   97.50%
+  Req/Sec     2.86k   110.69     3.26k    91.62%
+227365 requests in 10.01s, 5.81GB read
+
+Requests/sec:  22720.29
+Transfer/sec:    594.07MB
+```
