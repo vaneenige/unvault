@@ -23,14 +23,14 @@ function List() {
   return h("ul", null, items.map(Item));
 }
 
-routes.insert("preact", 1000, () => render(List()), {
+routes.insert("preact", 1000, () => Buffer.from(render(List()), "utf8"), {
   headers: {
     "Content-Type": "text/html"
   }
 });
 
 server.get("/normal/preact", async (req, res) => {
-  send(res, 200, render(List()), {
+  send(res, 200, Buffer.from(render(List()), "utf8"), {
     "Content-Type": "text/html"
   });
 });
