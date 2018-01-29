@@ -30,7 +30,7 @@ routes.insert("preact", 1000, () => render(List()), {
   }
 });
 
-server.get("/slow/preact", async (req, res) => {
+server.get("/normal/preact", async (req, res) => {
   send(res, 200, render(List()), {
     "Content-Type": "text/html"
   });

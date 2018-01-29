@@ -31,7 +31,7 @@ connect(db => {
   const server = polka();
   server.listen(3000);
 
-  server.get("/slow/mongo", async (req, res) => {
+  server.get("/normal/mongo", async (req, res) => {
     const nodes = await getNodes(db);
     send(res, 200, JSON.stringify(nodes), {
       "Content-Type": "application/json"
