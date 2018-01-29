@@ -1,6 +1,61 @@
-## Preact
+# Benchmarks
 
-#### Slow (10):
+This library can improve performance for different cases as shown in these benchmarks. The node server is started with `node v9.0.0` and results are documented after a single warm-up run.
+
+The benchmarking tool for results is the following:
+
+```sh
+$ wrk -t8 -c100 -d10s http://localhost:3000/:type/:test
+```
+
+## MongoDB
+
+Finding 100 nodes in mongodb and returning them as JSON.
+
+#### Results
+
+| Type    | Requests/sec |
+| ------- | ------------ |
+| Normal  | 2160         |
+| Unvault | 19481        |
+
+#### Normal
+
+```
+Thread Stats   Avg      Stdev     Max   +/- Stdev
+  Latency    44.23ms    8.44ms  80.36ms   65.70%
+  Req/Sec   271.83     26.52   353.00     64.25%
+21755 requests in 10.07s, 209.77MB read
+
+Requests/sec:   2160.05
+Transfer/sec:     20.83MB
+```
+
+#### Unvault
+
+```
+Thread Stats   Avg      Stdev     Max   +/- Stdev
+  Latency     4.89ms  391.21us   9.38ms   92.94%
+  Req/Sec     2.47k   341.17     9.22k    99.75%
+196758 requests in 10.10s, 1.85GB read
+
+Requests/sec:  19481.54
+Transfer/sec:    187.85MB
+```
+
+## Preact SSR
+
+Server side rendering a Preact based list of X items with random values.
+
+#### Results
+
+| Items | Normal | Unvault |
+| ----- | ------ | ------- |
+| 10    | 16908  | 24600   |
+| 100   | 6013   | 23053   |
+| 1000  | 850    | 14078   |
+
+#### Normal (10):
 
 ```
 Thread Stats   Avg      Stdev     Max   +/- Stdev
@@ -12,7 +67,7 @@ Requests/sec:  16908.42
 Transfer/sec:      6.88MB
 ```
 
-#### Fast (10):
+#### Unvault (10):
 
 ```
 Thread Stats   Avg      Stdev     Max   +/- Stdev
@@ -24,7 +79,7 @@ Requests/sec:  24600.96
 Transfer/sec:     10.02MB
 ```
 
-#### Slow (100):
+#### Normal (100):
 
 ```
 Thread Stats   Avg      Stdev     Max   +/- Stdev
@@ -36,7 +91,7 @@ Requests/sec:   6013.74
 Transfer/sec:     16.52MB
 ```
 
-#### Fast (100):
+#### Unvault (100):
 
 ```
 Thread Stats   Avg      Stdev     Max   +/- Stdev
@@ -48,7 +103,7 @@ Requests/sec:  23053.74
 Transfer/sec:     63.32MB
 ```
 
-#### Slow (1000):
+#### Normal (1000):
 
 ```
 Thread Stats   Avg      Stdev     Max   +/- Stdev
@@ -60,7 +115,7 @@ Requests/sec:    850.18
 Transfer/sec:     22.24MB
 ```
 
-#### Fast (1000):
+#### Unvault (1000):
 
 ```
 Thread Stats   Avg      Stdev     Max   +/- Stdev
