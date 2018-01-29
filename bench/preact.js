@@ -24,7 +24,6 @@ function List() {
 }
 
 routes.insert("preact", 1000, () => render(List()), {
-  value: "Hello World",
   headers: {
     "Content-Type": "text/html"
   }
