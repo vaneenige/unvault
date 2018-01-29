@@ -43,7 +43,7 @@ Requests/sec:  19481.54
 Transfer/sec:    187.85MB
 ```
 
-## Preact SSR
+## Preact
 
 Server side rendering a Preact based list of X items with random values.
 
