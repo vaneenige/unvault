@@ -8,7 +8,7 @@ The benchmarking tool for results is the following:
 $ wrk -t8 -c100 -d10s http://localhost:3000/:type/:test
 ```
 
-## Default
+## Unvault
 
 #### 10 items:
 
@@ -44,6 +44,44 @@ Thread Stats   Avg      Stdev     Max   +/- Stdev
 
 Requests/sec:  23979.21
 Transfer/sec:    627.18MB
+```
+
+## Vanilla
+
+#### 10 items:
+
+```
+Thread Stats   Avg      Stdev     Max   +/- Stdev
+  Latency     4.97ms    0.93ms  14.80ms   91.92%
+  Req/Sec     2.43k   349.17     9.34k    99.75%
+194273 requests in 10.10s, 80.72MB read
+
+Requests/sec:  19233.29
+Transfer/sec:      7.99MB
+```
+
+#### 100 items:
+
+```
+Thread Stats   Avg      Stdev     Max   +/- Stdev
+  Latency     9.87ms    2.07ms  20.55ms   94.10%
+  Req/Sec     1.22k    60.27     1.33k    65.12%
+97329 requests in 10.02s, 276.60MB read
+
+Requests/sec:   9714.98
+Transfer/sec:     27.61MB
+```
+
+#### 1000 items:
+
+```
+Thread Stats   Avg      Stdev     Max   +/- Stdev
+  Latency    58.08ms    4.56ms 121.67ms   76.84%
+  Req/Sec   206.75     38.76   264.00     80.70%
+16585 requests in 10.10s, 449.57MB read
+
+Requests/sec:   1641.81
+Transfer/sec:     44.50MB
 ```
 
 ## Preact

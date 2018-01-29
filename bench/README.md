@@ -49,6 +49,14 @@ For this benchmark different libraries are used to render a list of X items with
 
 > **Note:** `Normal` only describes the way I used to set up my structure. Provide me better ways and I'll update them.
 
+### Vanilla
+
+| Items | Normal | Unvault | Faster |
+| ----- | ------ | ------- | ------ |
+| 10    | 19233  | 25001   | 1.30x  |
+| 100   | 9714   | 26749   | 2.75x  |
+| 1000  | 1641   | 23979   | 14.61x |
+
 ### [Preact](https://github.com/developit/preact/)
 
 | Items | Normal | Unvault | Faster |
