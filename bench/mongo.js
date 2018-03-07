@@ -1,7 +1,7 @@
-const mongodb = require("mongodb");
-const polka = require("polka");
-const send = require("@polka/send");
-const unvault = require("./../lib");
+const mongodb = require('mongodb');
+const polka = require('polka');
+const send = require('@polka/send');
+const unvault = require('./../lib');
 
 const routes = unvault();
 
@@ -17,13 +17,13 @@ function connect(callback) {
 
 async function getNodes(db) {
   return db
-    .collection("nodes")
+    .collection('nodes')
     .find()
     .toArray();
 }
 
 connect(db => {
-  routes.insert("mongo", 2000, async () => {
+  routes.insert('mongo', 2000, async () => {
     const nodes = await getNodes(db);
     return JSON.stringify(nodes);
   });
@@ -31,17 +31,17 @@ connect(db => {
   const server = polka();
   server.listen(3000);
 
-  server.get("/normal/mongo", async (req, res) => {
+  server.get('/normal/mongo', async (req, res) => {
     const nodes = await getNodes(db);
     send(res, 200, JSON.stringify(nodes), {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json',
     });
   });
 
-  server.get("/fast/mongo", (req, res) => {
-    const { value } = routes.get("mongo");
+  server.get('/fast/mongo', (req, res) => {
+    const { value } = routes.get('mongo');
     send(res, 200, value, {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json',
     });
   });
 });

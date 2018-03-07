@@ -1,10 +1,10 @@
-const { wire } = require("viperhtml");
-const polka = require("polka");
-const send = require("@polka/send");
-const unvault = require("./../lib");
+const { wire } = require('viperhtml');
+const polka = require('polka');
+const send = require('@polka/send');
+const unvault = require('./../lib');
 
-if (typeof process.argv[2] === "undefined") {
-  console.log("> Please provide the number of items.");
+if (typeof process.argv[2] === 'undefined') {
+  console.log('> Please provide the number of items.');
   process.exit(1);
 }
 
@@ -22,19 +22,19 @@ function List() {
   return wire()`<ul>${items.map(Item)}</ul>`;
 }
 
-routes.insert("viper", 1000, () => List(), {
+routes.insert('viper', 1000, () => List(), {
   headers: {
-    "Content-Type": "text/html"
-  }
+    'Content-Type': 'text/html',
+  },
 });
 
-server.get("/normal/viper", async (req, res) => {
+server.get('/normal/viper', async (req, res) => {
   send(res, 200, List(), {
-    "Content-Type": "text/html"
+    'Content-Type': 'text/html',
   });
 });
 
-server.get("/fast/viper", (req, res) => {
-  const { value, headers } = routes.get("viper");
+server.get('/fast/viper', (req, res) => {
+  const { value, headers } = routes.get('viper');
   send(res, 200, value, headers);
 });
