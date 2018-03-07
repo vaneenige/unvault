@@ -91,9 +91,13 @@ server.get(route, (req, res) => {
 
 _Inserts a tracker into the vault._
 
+Returns: Result of update function (use await for async updates).
+
 ### .trigger(key)
 
 _Manually runs a tracker._
+
+Returns: Result of update function (use await for async updates).
 
 ### .prototype
 

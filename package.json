@@ -1,6 +1,6 @@
 {
   "name": "unvault",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A minimal layer for node that allows results of time-consuming tasks to be stored.",
   "repository": "vaneenige/unvault",
   "main": "lib/index.js",
